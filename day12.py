@@ -6,22 +6,29 @@ for line in f:
 	m,n = line.split(' <-> ')
 	n = n.split(', ')
 	dic[m] = n
-	print (type(m),type(n))
 
-while dic:
+count = 0
+lis = list(dic.keys())
+while lis:
 	L = []
-	for j in dic.keys():
-		tot = set(dic[j])
-		l = len(tot)
-		c = 0 
-		while l != c:
-			for i in dic.keys():
-				if i in tot:
-					for j in dic[i]:
-						tot.add(j)
-			c = l
+	LL = []
+	for j in lis:
+		if j in LL:
+			pass
+		else:
+			tot = set(dic[j])
 			l = len(tot)
-		L.extend(tot)
-		li = list(tot)
-		for i in li:
-			del dic[i]
+			c = 0 
+			while l != c:
+				for i in dic.keys():
+					if i in tot:
+						for j in dic[i]:
+							tot.add(j)
+				c = l
+				l = len(tot)
+			L.extend(tot)
+			LL.append(tot)
+			li = list(tot)
+			count += 1
+			for i in li:
+				del lis[lis.index(i)
